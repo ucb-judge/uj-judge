@@ -1,6 +1,12 @@
 spring:
   application:
     name: uj-judge
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:uj-submissions}
+    password: ${RABBITMQ_PASSWORD:uj-submissions123}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:ucb-judge-rabbit}
   datasource:
     type: org.postgresql.jdbc2.optional.SimpleDataSource
     username: ${POSTGRES_USERNAME:postgres}
@@ -25,9 +31,9 @@ keycloak:
   auth-server-url: ${KEYCLOAK_SERVER_URI:http://localhost:8090}
   autodetect-bearer-only: true
   credentials:
-    secret: ${KEYCLOAK_CLIENT_SECRET:BNHREThKV64GqdjrJKJqkmLLowtwjfSi}
+    secret: ${KEYCLOAK_CLIENT_SECRET:HaIW39Z5wqolBzxeBArqbodLQRI4wPel}
   realm: ${KEYCLOAK_REALM:ucb-judge}
-  resource: ${KEYCLOAK_CLIENT_ID:uj-problems}
+  resource: ${KEYCLOAK_CLIENT_ID:uj-judge}
   ssl-required: none
   use-resource-role-mappings: false
   security-constraints:
