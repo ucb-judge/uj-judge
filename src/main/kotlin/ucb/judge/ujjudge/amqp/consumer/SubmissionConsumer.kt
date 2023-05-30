@@ -77,13 +77,17 @@ class SubmissionConsumer constructor(
                 verdictProducer.sendVerdict(verdictDto)
                 return
             }
+            // create verdictDto
+            val verdictDto = VerdictDto()
+            verdictDto.submissionId = submissionInfoDto.submissionId
+            verdictDto.testcaseId = testcase.testcaseId
+            verdictDto.output = codeRunnerResDto.output
+            verdictDto.executionTime = codeRunnerResDto.executionTime
+            verdictDto.executionMemory = codeRunnerResDto.memoryUsage.toLong()
             // compare output with expected output
             logger.info("Comparing output with expected output")
             if (codeRunnerResDto.output != testcase.expectedOutput) {
                 logger.info("Verdict is: WA")
-                val verdictDto = VerdictDto()
-                verdictDto.submissionId = submissionInfoDto.submissionId
-                verdictDto.testcaseId = testcase.testcaseId
                 verdictDto.verdictId = 2
                 verdictDto.isLast = true
                 logger.info("Sending verdict for testcase #${testcase.testcaseNumber}")
@@ -92,12 +96,7 @@ class SubmissionConsumer constructor(
             }
 
             logger.info("Verdict is: AC")
-            val verdictDto = VerdictDto()
-            verdictDto.submissionId = submissionInfoDto.submissionId
-            verdictDto.testcaseId = testcase.testcaseId
             verdictDto.verdictId = 1
-            verdictDto.executionTime = codeRunnerResDto.executionTime
-            verdictDto.executionMemory = codeRunnerResDto.memoryUsage.toLong()
             verdictDto.isLast = false
             if (i == testcases.size - 1) {
                 verdictDto.isLast = true
