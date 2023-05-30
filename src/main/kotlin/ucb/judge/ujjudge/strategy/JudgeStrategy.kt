@@ -1,9 +1,7 @@
 package ucb.judge.ujjudge.strategy
 
-import org.springframework.web.multipart.MultipartFile
+import ucb.judge.ujjudge.dto.CodeRunnerResDto
 
 interface JudgeStrategy {
-    fun getVerdictId(): Long
-
-    fun convertToMultipartFile(sourceCode: String): MultipartFile
+    fun run(sourceCode: String, input: String, timeLimit: Double, memoryLimit: Int): CodeRunnerResDto
 }

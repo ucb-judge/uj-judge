@@ -38,3 +38,8 @@ keycloak:
   use-resource-role-mappings: false
   security-constraints:
     # TODO: add
+
+aws:
+  code-runner:
+    url: https://1i71fyddn3.execute-api.us-west-1.amazonaws.com/dev/code-runner
+    key: 4zOVpxxxGcVsVY1VmLdT47GRDeX1M988GJpE9Mcg
