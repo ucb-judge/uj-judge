@@ -38,12 +38,15 @@ class SubmissionConsumer constructor(
             // judgeService.sendSubmission(sourceCode, submissionInfoDto, testcase)
             // compare output
 
+            // if output is incorrect, send verdict and break loop
+
             val verdictDto = VerdictDto()
             verdictDto.submissionId = submissionInfoDto.submissionId
             verdictDto.testcaseId = testcase.testcaseId
             verdictDto.verdictId = 1
-            verdictDto.executionTime = 0
+            verdictDto.executionTime = 0.0
             verdictDto.executionMemory = 0
+            verdictDto.isLast = false
             if (i == testcases.size - 1) {
                 verdictDto.isLast = true
             }
