@@ -35,11 +35,11 @@ ENV KEYCLOAK_CLIENT_ID="KEYCLOAK_CLIENT_ID"
 
 # Code runner
 ENV AWS_CODE_RUNNER_URL="AWS_CODE_RUNNER_URL"
-ENV AWS_CODE_RUNNER_KEY"AWS_CODE_RUNNER_KEY"
+ENV AWS_CODE_RUNNER_KEY="AWS_CODE_RUNNER_KEY"
 
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY ${DEPENDENCY}/META-INF /app/META-INF
 COPY ${DEPENDENCY}/BOOT-INF/classes /app
 
-ENTRYPOINT ["java","-cp","app:app/lib/*","ucb.judge.ujusers.UjUsersApplicationKt"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","ucb.judge.ujusers.UjJudgeApplicationKt"]
