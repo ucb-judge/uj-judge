@@ -31,15 +31,14 @@ keycloak:
   auth-server-url: ${KEYCLOAK_SERVER_URI:http://localhost:8090}
   autodetect-bearer-only: true
   credentials:
-    secret: ${KEYCLOAK_CLIENT_SECRET:HaIW39Z5wqolBzxeBArqbodLQRI4wPel}
+    secret: ${KEYCLOAK_CLIENT_SECRET:t3F8EFRanqv47XYA0oKwCJnYPisHsli1}
   realm: ${KEYCLOAK_REALM:ucb-judge}
   resource: ${KEYCLOAK_CLIENT_ID:uj-judge}
   ssl-required: none
   use-resource-role-mappings: false
   security-constraints:
-    # TODO: add
 
 aws:
   code-runner:
-    url: https://1i71fyddn3.execute-api.us-west-1.amazonaws.com/dev/code-runner
-    key: 4zOVpxxxGcVsVY1VmLdT47GRDeX1M988GJpE9Mcg
+    url: ${AWS_CODE_RUNNER_URL:https://1i71fyddn3.execute-api.us-west-1.amazonaws.com/dev/code-runner}
+    key: ${AWS_CODE_RUNNER_KEY:4zOVpxxxGcVsVY1VmLdT47GRDeX1M988GJpE9Mcg}
