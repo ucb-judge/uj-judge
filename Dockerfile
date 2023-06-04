@@ -1,8 +1,8 @@
-FROM eclipse-temurin:11-jdk-alpine
-#FROM --platform=linux/x86_64 eclipse-temurin:11-jdk
+#FROM eclipse-temurin:11-jdk-alpine
+FROM --platform=linux/x86_64 eclipse-temurin:11-jdk
 #FROM arm64v8/eclipse-temurin:11-jdk
 
-EXPOSE 8083
+EXPOSE 8081
 
 VOLUME /tmp
 
@@ -37,9 +37,16 @@ ENV KEYCLOAK_CLIENT_ID="KEYCLOAK_CLIENT_ID"
 ENV AWS_CODE_RUNNER_URL="AWS_CODE_RUNNER_URL"
 ENV AWS_CODE_RUNNER_KEY="AWS_CODE_RUNNER_KEY"
 
+# RabbitMQ
+ENV RABBITMQ_HOST="RABBITMQ_HOST"
+ENV RABBITMQ_PORT="RABBITMQ_PORT"
+ENV RABBITMQ_USERNAME="RABBITMQ_USERNAME"
+ENV RABBITMQ_PASSWORD="RABBITMQ_PASSWORD"
+ENV RABBITMQ_VIRTUAL_HOST="RABBITMQ_VIRTUAL_HOST"
+
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY ${DEPENDENCY}/META-INF /app/META-INF
 COPY ${DEPENDENCY}/BOOT-INF/classes /app
 
-ENTRYPOINT ["java","-cp","app:app/lib/*","ucb.judge.ujusers.UjJudgeApplicationKt"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","ucb.judge.ujjudge.UjJudgeApplicationKt"]
